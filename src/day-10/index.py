@@ -33,6 +33,8 @@ pairs = {
 
 def checkChar(chars, idx):
 	length = len(chars)
+	if idx >= length:
+		return ("", 0)
 	char = chars[idx]
 	nIndex = idx + 1
 	if chars[idx] in list(pairs.keys()):
@@ -70,6 +72,7 @@ for i, line in enumerate(lines):
 				+ " for opening character " + Fore.YELLOW + str(oChar) + Fore.RESET
 			)
 			scores.append(characterScores.get(str(eChar)))
+		
 
 print("Sum of error scores for invalid lines: " + str(sum(scores)))
 print("Number of valid lines: " + str(len(validLines)))
@@ -83,12 +86,10 @@ def autocomplete(chars):
 		else:
 			if len(open) > 0:
 				open.pop(-1)
-	# print("Open characters: " + "".join(open))
 	completion = ""
 	if (len(open) > 0):
 		for char in reversed(open):
 			completion += pairs.get(char)
-	# print("Completion: " + completion)
 	return completion
 
 completions = []
