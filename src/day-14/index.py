@@ -45,7 +45,6 @@ def getCharCounts(pairs):
 	
 def main():
 	global template
-	global rules
 	pairs = getInitialPairs()
 	for i in range(40):
 		pairs = doStep(pairs)
